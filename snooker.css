@@ -1,0 +1,28 @@
+svg {
+	background-color: black;
+}
+#border {
+	fill: brown;
+}
+#board {
+	fill: green;
+}
+.marking, .markingdot {
+	opacity: 0.8;
+}
+.marking {
+	stroke: white;
+	stroke-width: 2;
+	fill: none;
+}
+.markingdot {
+	stroke: none;
+	fill: white;
+}
+.pocket {
+	fill: black;
+}
+#ball {
+	fill: white;
+	z-index: 100;
+}
