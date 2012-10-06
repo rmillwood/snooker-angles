@@ -1,6 +1,7 @@
-svg {
+svg#snookerTable {
 	background-color: black;
 }
+
 #border {
 	fill: brown;
 }
@@ -22,7 +23,99 @@ svg {
 .pocket {
 	fill: black;
 }
+
 #ball {
 	fill: white;
 	z-index: 100;
 }
+
+body {
+background-color: black;
+}
+
+h1 {
+float: left;
+display: block;
+padding: 0.25em;
+margin-right: 0.25em;
+border: 1px dotted;
+}
+
+div #appScreenArea {
+width: 320px;
+height: 460px;
+}
+
+div.appPage {
+display: none;
+width: 320px;
+height: 395px;
+padding: 1em;
+font-family:"Comic Sans MS", cursive, sans-serif;
+font-size:80%;
+background-color: white;
+}
+
+#splash {
+display: block;
+}
+
+button {
+ font-family: Helvetica ;
+ font-weight: bold ;
+ padding: 15px; 
+ border: 1px solid black ;
+ -moz-border-radius: 8px ;
+ -webkit-border-radius: 8px ; 
+ margin-top: 10px ;
+ margin-bottom: 10px ;
+ background-color: white ;
+}
+
+button#takeShot {
+float: right;
+}
+
+
+
+
+
+
+
+
+
+svg#angleDiagram {
+background-color: green;
+display:block;
+float: right;
+}
+
+
+.constructionLine {
+fill:none;
+stroke:white;
+stroke-width:2;
+stroke-dasharray:2, 2;
+}
+
+.vectorLine {
+fill:white;
+stroke:white;
+stroke-width:2;
+}
+
+.diagramText {
+font-size:75%;
+text-align:center;
+text-anchor:middle;
+fill:white;
+font-family:Comic Sans MS;
+}
+
+
+
+
+
+
+
+

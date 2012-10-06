@@ -225,3 +225,14 @@ function getNumber(text) {
 	return res;
 }
 
+function navigateToAppPage(appPageId) { 
+    var appPages = document.getElementsByClassName('appPage');
+    for ( var i = 0; i < appPages.length; i++ ) {
+         if (appPages[i].id == appPageId) {
+            appPages[i].style.display = "block";
+            }
+         else {
+            appPages[i].style.display = "none";
+            }
+         }  
+}

@@ -13,8 +13,21 @@
 
     <title>Snooker angles</title>
 </head>
+
+
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" width="552.0" height="312.0">
+
+<div id="appScreenArea">
+
+<div class="appPage" id="splash">
+<img src="iphone_snooker_splash.png">
+</div>
+
+<div class="appPage" id="play">
+<h1>Play</h1>
+<button type="button" id="takeShot" disabled="disabled">Take a shot!</button>
+
+<svg id="snookerTable" xmlns="http://www.w3.org/2000/svg" width="320.0" height="320.0">
 <rect id="border" x="20.0" y="20.0" width="512.0" height="272.0" rx="4.0" ry="4.0" />
 <rect id="board" x="36.0" y="36.0" width="480.0" height="240.0" />
 <line class="marking" x1="135.42857142857142" x2="135.42857142857142" y1="36.0" y2="276.0" />
@@ -30,10 +43,70 @@
 <circle class="pocket" r="8.0" cx="514.0" cy="274.0" />
 <circle id="ball" r="5.0" cx="156.0" cy="156.0" />
 </svg>
-<br>
-<button type="button" id="takeShot" disabled="disabled">Take a shot!</button>
-<script type="text/javascript" src="iphone_snooker_code.js">
-</script>
+</div>
+
+<div class="appPage" id="knobs">
+<h1>Knobs</h1>
+<img src="iphone_snooker_knobs_image.jpeg">
+</div>
+
+<div class="appPage" id="flip">
+<h1>Flip</h1>
+<img src="iphone_snooker_flip_image.png">
+</div>
+
+<div class="appPage" id="code">
+<h1>Code</h1>
+</div>
+
+<div class="appPage" id="learn">
+<h1>Learn</h1>
+
+<p>To get the ball in the pocket, you must imagine the angle it would take. By playing, you find out which number makes which angle. This should help you know your angles!</p>
+
+<svg id="angleDiagram" xmlns="http://www.w3.org/2000/svg" width="180" height="180">
+  <path class="constructionLine" id="vertical" d="m 90,25 0,130" />
+  <path class="constructionLine" id="horizontal" d="m 25,90 130,0" />
+  <text class="diagramText"x="90"  y="12" >North</text>
+  <text class="diagramText"x="90"  y="24" >0&deg;</text>
+  <text class="diagramText"x="165"  y="88" >East</text>
+  <text class="diagramText"x="165"  y="100" >90&deg;</text>
+  <text class="diagramText"x="90"  y="165" >South</text>
+  <text class="diagramText"x="90"  y="177" >180&deg;</text>
+  <text class="diagramText"x="15"  y="88" >West</text>
+  <text class="diagramText"x="15"  y="100" >270&deg;</text>
+  <text class="diagramText"x="140"  y="60" >60&deg;</text>
+  <path class="vectorLine" id="direction" d="m 90,90 80,-40 -2,4 -2,-4 6,0" />
+  <path class="constructionLine" id="turn" d="m 90,45 c 0,0 25,0 40,25" />
+</svg>
+<p>These numbers are:<p>
+<p>0 for straight up (North),</p> 
+<p>90 for right (East),</p>
+<p>180 for down (South) and</p>
+<p>270 for left (West).</p>
+<p>This way of measuring angles is called bearings and is used by orienteers, ships and planes to find their way.</p>
+</div>
+
+<div class="appPage" id="about">
+<h1>About</h1>
+<p>This program was first written in 1979 for one of the first computers used in schools, the Research Machines 380Z.</p>
+<img src="rm380z_computer.jpg">
+<p>It later became part of the SMILE suite of programs used in schools to learn about angles ('Flip'to see how the older version worked).</p>
+<p>Play with it to learn about the numbers used for angles. This version can also be used to investigate friction and bounce as well. Read more at the <a href="http://wwww.naec.org.uk/artefacts/snooker/">National Archive of Educational Computing</a>.</p>
+</div>
+
+<div id="navigation">
+<button type="button" id="play" onclick="navigateToAppPage('play')">Play</button>
+<button type="button" id="knobs" onclick="navigateToAppPage('knobs')">Knobs</button>
+<button type="button" id="flip"onclick="navigateToAppPage('flip')">Flip</button>
+<button type="button" id="learn"onclick="navigateToAppPage('learn')">Learn</button>
+<button type="button" id="about" onclick="navigateToAppPage('about')"">About</button>
+</div>
+
+
+<script type="text/javascript" src="iphone_snooker_code.js"></script>
+
+</div>
 
 </body>
 </html>
