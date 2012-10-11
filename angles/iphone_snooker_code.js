@@ -96,6 +96,9 @@ function takeShot(ev) {
 	}
 
 	tries += 1;
+	
+	
+	deg =deg + 90; //NASTY HACK RELATED TO HACK TO ROTATE TABLE IN SVG
 
 	var rad = deg * Math.PI / 180;
 
