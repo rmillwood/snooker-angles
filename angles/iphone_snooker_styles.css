@@ -1,32 +1,61 @@
 svg#snookerTable {
-	background-color: black;
+	background-color: white;
 }
 
-#border {
+.border {
 	fill: brown;
 }
+
 #board {
 	fill: green;
 }
+
 .marking, .markingdot {
 	opacity: 0.8;
 }
+
 .marking {
 	stroke: white;
 	stroke-width: 2;
 	fill: none;
 }
+
 .markingdot {
 	stroke: none;
 	fill: white;
 }
+
 .pocket {
 	fill: black;
 }
 
+
 #ball {
 	fill: white;
-	z-index: 100;
+}
+
+svg#flipSnookerTable {
+	background-color: white;
+}
+
+.flipTv{
+	background-color: DarkSlateGrey ;
+}
+
+.flipBorder {
+	fill: white;
+}
+
+#flipBoard {
+	fill: grey;
+}
+
+.flipPocket {
+	fill: grey;
+}
+
+#flipBall {
+	fill: white;
 }
 
 body {
@@ -37,7 +66,7 @@ margin: 0px;
 h1 {
 float: left;
 display: block;
-padding: 0.25em;
+padding: 0.4em;
 margin:  0.25em;
 border: 4px dotted green;
 }
@@ -64,6 +93,13 @@ padding-right: 0.5em;
 padding-top: 0.5em;
 }
 
+div #navigation {
+width: 320px;
+height: 65px;
+text-align:center;
+}
+
+
 .illustration {
 margin: 0.5em;
 display: block;
@@ -77,8 +113,8 @@ display: block;
 button {
  font-family: Helvetica ;
  font-weight: bold ;
- padding: 1em; 
- border: 1px solid black ;
+ padding: 0.5em; 
+ border: 2px solid grey ;
  -moz-border-radius: 8px ;
  -webkit-border-radius: 8px ; 
  margin-top: 0.5em;
@@ -87,7 +123,7 @@ button {
 }
 
 button#takeShot {
-float: right;
+float: left;
 }
 
 svg#angleDiagram {
@@ -118,7 +154,28 @@ fill:white;
 font-family:Comic Sans MS;
 }
 
+div.dial {
+	float: none;
+	text-align:center;
+}
 
+#backDrop {
+	fill: DarkSlateGrey;
+}
+#sliderFrame {
+	fill: LightSlateGrey;
+}
+#handle {
+	fill: white;
+}
+
+#name {
+	fill: white;
+}
+
+#value {
+	fill: white;
+}
 
 
 

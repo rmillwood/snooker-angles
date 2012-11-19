@@ -1,4 +1,6 @@
 var bounce = 0.9;
+var coefficientOfFriction = 0.98;
+ 
 var ballNudge = 80;
 
 var shotButton;
@@ -18,24 +20,24 @@ function Ball(elt) {
 		if(typeof newr !== "undefined")
 			elt.r.baseVal.value = newr;
 		return elt.r.baseVal.value;
-	}
+	};
 
 	ball.x = function(newx) {
 		if(typeof newx !== "undefined")
 			elt.cx.baseVal.value = newx;
 		return elt.cx.baseVal.value;
-	}
+	};
 
 	ball.y = function(newy) {
 		if(typeof newy !== "undefined")
 			elt.cy.baseVal.value = newy;
 		return elt.cy.baseVal.value;
-	}
+	};
 
 	ball.move = function(dx, dy) {
 		ball.x(ball.x() + dx);
 		ball.y(ball.y() + dy);
-	}
+	};
 }
 
 function main() {
@@ -57,11 +59,9 @@ function main() {
 	realBoard = document.getElementById('board');
 	board = {
 		left: realBoard.x.baseVal.value,
-		right: realBoard.x.baseVal.value
-			+ realBoard.width.baseVal.value,
+		right: realBoard.x.baseVal.value + realBoard.width.baseVal.value,
 		top: realBoard.y.baseVal.value,
-		bottom: realBoard.y.baseVal.value
-			+ realBoard.height.baseVal.value
+		bottom: realBoard.y.baseVal.value + realBoard.height.baseVal.value
 	};
 
 	shotButton = document.getElementById('takeShot');
@@ -70,7 +70,8 @@ function main() {
 
 	tries = 0;
 }
-addEventListener('load', function(){ try { main() } catch(e) { alert(e.msg); } }, false);
+
+addEventListener('load', function(){ try { main(); } catch(e) { alert(e.msg); } }, false);
 
 function takeShot(ev) {
 	var deg = getNumber('Angle? (degrees, 0 is north)');
@@ -98,7 +99,7 @@ function takeShot(ev) {
 	tries += 1;
 	
 	
-	deg =deg + 90; //NASTY HACK RELATED TO HACK TO ROTATE TABLE IN SVG
+	deg = +deg + 90; //NASTY HACK RELATED TO HACK TO ROTATE TABLE IN SVG
 
 	var rad = deg * Math.PI / 180;
 
@@ -143,6 +144,13 @@ function frame(ball) {
 					msg += 'Good grief.';
 			}
 			alert(msg);
+			ball.x(156);
+			ball.y(156);
+			ball.move(
+					(2*Math.random() - 1) * ballNudge,
+					(2*Math.random() - 1) * ballNudge);
+			ball.elt.style.opacity = 1;
+			shotButton.disabled = false;
 			return;
 		}
 		else
@@ -173,7 +181,7 @@ function frame(ball) {
 
 	if(y - r < board.top) {
 		ball.v.y = -bounce * ball.v.y;
-		y = 2 * (board.top + r) - y
+		y = 2 * (board.top + r) - y;
 	} else if(y + r > board.bottom) {
 		ball.v.y = -bounce * ball.v.y;
 		y = 2 * (board.bottom - r) - y;
@@ -197,13 +205,13 @@ function checkPocket(ball)
 }
 
 function friction(v) {
-	var res = {vx: 0, vy: 0};
 	var speed = norm(v);
 
 	if(speed <= 0.05)
 		return {x: 0, y: 0};
 	else
-		speed *= 0.99;
+		speed *= coefficientOfFriction;
+;
 
 	return setlength(v, speed);
 }
