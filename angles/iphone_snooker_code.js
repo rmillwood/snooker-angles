@@ -74,6 +74,10 @@ function main() {
 addEventListener('load', function(){ try { main(); } catch(e) { alert(e.msg); } }, false);
 
 function takeShot(ev) {
+	var deg = document.getElementById('angle').value;
+	var power = document.getElementById('power').value;
+	
+  /*	
 	var deg = getNumber('Angle? (degrees, 0 is north)');
 	var power;
 
@@ -95,7 +99,8 @@ function takeShot(ev) {
 
 		power = getNumber('Power? (1-10)');
 	}
-
+*/
+	
 	tries += 1;
 	
 	

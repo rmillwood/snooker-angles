@@ -39,6 +39,10 @@
 </g>
 </svg>
 <button type="button" id="takeShot" disabled="disabled">Take a shot!</button>
+<br />
+Angle (0-360)<input type="number" id="angle" name="angle" min="0" max="360" step="1" value="0">
+<br />
+Power (0-10)<input type="number" id="power" name="power" min="0" max="10" step="1" value="5">
 </div>
 
 
@@ -146,7 +150,8 @@
 </svg>
 </div>
 <p><a href="http://en.wikipedia.org/wiki/Friction">Friction on Wikipedia</a></p>
-
+<input type="range" name="foo">
+<output for="foo" onforminput="value = foo.valueAsNumber;"></output>
 </div> 
 
 
