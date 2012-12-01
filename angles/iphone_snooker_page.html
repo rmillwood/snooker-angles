@@ -38,13 +38,73 @@
 <circle id="ball" r="5" cx="156" cy="156" />
 </g>
 </svg>
-<button type="button" id="takeShot" disabled="disabled">Take a shot!</button>
-<br />
-Angle (0-360)<input type="number" id="angle" name="angle" min="0" max="360" step="1" value="0">
-<br />
-Power (0-10)<input type="number" id="power" name="power" min="0" max="10" step="1" value="5">
-</div>
 
+<div id="value_entry">
+<form class="numeric_keypad" >
+<div id="keypad">
+    <div class="angle_value">
+    <p>Angle</p>
+     <input type="text" id="angle" value="0" size="3" readonly="readonly" class="numeric")>
+     &deg;
+    </div>
+    <div id="row1">
+     <input type="button" name="digit" value="1" id="_1" class="numeric_key">
+     <input type="button" name="digit" value="2" id="_2" class="numeric_key">
+     <input type="button" name="digit" value="3" id="_3" class="numeric_key">
+    </div>
+    <div id="row2">
+     <input type="button" name="digit" value="4" id="_4" class="numeric_key">
+     <input type="button" name="digit" value="5" id="_5" class="numeric_key">
+     <input type="button" name="digit" value="6" id="_6" class="numeric_key">
+    </div>
+    <div id="row3">
+     <input type="button" name="digit" value="7" id="_7" class="numeric_key">
+     <input type="button" name="digit" value="8" id="_8" class="numeric_key">
+     <input type="button" name="digit" value="9" id="_9" class="numeric_key">
+    </div>
+    <div id="row4">
+      <input type="button" name="digit" value="0" id="_0" class="numeric_key">
+      <input type="button" name="delete" value="del" id="_del" class="delete-key">
+    </div>
+</div>
+</form>
+
+<script type="text/javascript">
+
+onload=function(){ attachKeyPadHandlers(); }
+
+function attachKeyPadHandlers(){
+  var the_nums = document.getElementsByName("digit");
+  for (var i=0; i < the_nums.length; i++) { the_nums[i].onclick=addDigit; }
+  var delete_key = document.getElementsByName("delete");
+  delete_key[0].onclick=deleteDigit;
+}
+
+function addDigit() {
+var digits = document.getElementById("angle");
+if (digits.value.length < digits.size) { digits.value += this.value; }
+}
+
+function deleteDigit() {
+var digits = document.getElementById("angle");
+digits.value = digits.value.slice(0, -1);
+}
+
+</script>
+
+<form class="range" >
+<div class=power_value>
+<p>Power</p>
+<input type="range" name="power" id="power" min="1" max="10" step="1" width="4em">
+<output for="power" onforminput="value = power.valueAsNumber;"></output>
+</div>
+</form>
+
+<form class="shot">
+<button type="button" id="takeShot" disabled="disabled">Take a shot!</button>
+</form>
+</div>
+</div>
 
 
 <div class="appPage" id="learn">
@@ -150,8 +210,6 @@ Power (0-10)<input type="number" id="power" name="power" min="0" max="10" step="
 </svg>
 </div>
 <p><a href="http://en.wikipedia.org/wiki/Friction">Friction on Wikipedia</a></p>
-<input type="range" name="foo">
-<output for="foo" onforminput="value = foo.valueAsNumber;"></output>
 </div> 
 
 

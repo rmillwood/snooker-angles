@@ -76,31 +76,7 @@ addEventListener('load', function(){ try { main(); } catch(e) { alert(e.msg); } 
 function takeShot(ev) {
 	var deg = document.getElementById('angle').value;
 	var power = document.getElementById('power').value;
-	
-  /*	
-	var deg = getNumber('Angle? (degrees, 0 is north)');
-	var power;
-
-	if(deg === null)
-		return;
-
-	power = getNumber('Power? (1-10)');
-
-	while(true)
-	{
-		if(power === null)
-			return;
-		if(power < 1)
-			alert("That's too small!");
-		else if(power > 10)
-			alert("That's too big!");
-		else
-			break;
-
-		power = getNumber('Power? (1-10)');
-	}
-*/
-	
+		
 	tries += 1;
 	
 	
@@ -156,6 +132,7 @@ function frame(ball) {
 					(2*Math.random() - 1) * ballNudge);
 			ball.elt.style.opacity = 1;
 			shotButton.disabled = false;
+			tries = 0;
 			return;
 		}
 		else

@@ -1,5 +1,6 @@
 svg#snookerTable {
 	background-color: white;
+	float: right;
 }
 
 .border {
@@ -34,11 +35,53 @@ svg#snookerTable {
 	fill: white;
 }
 
-#inputAngleAndPower {
-	text-align = right;
+
+div#value_entry {
+	width:120px;
+}
+form.numeric_keypad {
+	text-align: center;
+	margin: 0.5em;
 }
 
+form.range {
+	text-align: center;
+	margin: 0.5em;
+}
 
+form.shot {
+	text-align: center;
+	margin: 1em;
+}
+
+.angle_value {
+	font-size: 100%;
+	}
+		
+input.numeric { 
+	text-align: right; 
+	font-size: 100%; 
+	margin: none; 
+	width: 2em;
+	}
+	
+input.numeric_key {  
+	width: 24px; 
+	text-align:center;
+	}
+	
+.delete_key { 
+	width: 48px;
+	}
+	
+.power_value {
+	font-size: 100%;
+	}
+	
+input#power {
+	width: 80%;
+}
+	
 
 
 svg#flipSnookerTable {
