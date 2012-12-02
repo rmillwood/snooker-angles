@@ -1,14 +1,14 @@
-var bounce = 0.9;
-var coefficientOfFriction = 0.98;
- 
+var defaultFriction = 0.98;
+var coefficientOfFriction = defaultFriction;
+var defaultRestitution = 0.9;
+var coefficientOfRestitution = defaultRestitution;
 var ballNudge = 80;
-
 var shotButton;
 var tries;
-
 var ball;
 var board;
 var pockets;
+var stoppedSpeed = 0.1;
 
 function Ball(elt) {
 	var ball = this;
@@ -41,6 +41,8 @@ function Ball(elt) {
 }
 
 function main() {
+	setDefaultValues();
+	attachKeyPadHandlers();
 	ball = new Ball(document.getElementById('ball'));
 	ball.move(
 		(2*Math.random() - 1) * ballNudge,
@@ -67,42 +69,33 @@ function main() {
 	shotButton = document.getElementById('takeShot');
 	shotButton.addEventListener('click', takeShot, false);
 	shotButton.disabled = false;
-
 	tries = 0;
 }
 
 addEventListener('load', function(){ try { main(); } catch(e) { alert(e.msg); } }, false);
 
 function takeShot(ev) {
-	var deg = document.getElementById('angle').value;
-	var power = document.getElementById('power').value;
-		
-	tries += 1;
-	
-	
-	deg = +deg + 90; //NASTY HACK RELATED TO HACK TO ROTATE TABLE IN SVG
-
+	var deg = document.getElementById('angle_text').value;
+	deg = +deg + 90; //NASTY HACK RELATED TO HACK TO ROTATED TABLE IN SVG
 	var rad = deg * Math.PI / 180;
-
+	var power = document.getElementById('power_range').value;	
+	tries += 1;
 	ball.v.x = power * Math.sin(rad);
 	ball.v.y = -power * Math.cos(rad);
 	shotButton.disabled = true;
-
 	frame(ball);
 }
 
 function frame(ball) {
+
 	if(ball.v.x == 0 && ball.v.y == 0) {
 		shotButton.disabled = false;
 		return;
 	}
-
 	var x = ball.x();
 	var y = ball.y();
 	var r = ball.r();
-
 	var pocket = checkPocket(ball);
-
 	if(pocket)
 	{
 		var towards = {x: pocket.x - x, y: pocket.y - y};
@@ -154,18 +147,18 @@ function frame(ball) {
 	ball.v = friction(ball.v);
 
 	if(x - r < board.left) {
-		ball.v.x = -bounce * ball.v.x;
+		ball.v.x = -coefficientOfRestitution * ball.v.x;
 		x = 2 * (board.left + r) - x;
 	} else if(x + r > board.right) {
-		ball.v.x = -bounce * ball.v.x;
+		ball.v.x = -coefficientOfRestitution * ball.v.x;
 		x = 2 * (board.right - r) - x;
 	}
 
 	if(y - r < board.top) {
-		ball.v.y = -bounce * ball.v.y;
+		ball.v.y = -coefficientOfRestitution * ball.v.y;
 		y = 2 * (board.top + r) - y;
 	} else if(y + r > board.bottom) {
-		ball.v.y = -bounce * ball.v.y;
+		ball.v.y = -coefficientOfRestitution * ball.v.y;
 		y = 2 * (board.bottom - r) - y;
 	}
 
@@ -189,12 +182,11 @@ function checkPocket(ball)
 function friction(v) {
 	var speed = norm(v);
 
-	if(speed <= 0.05)
+	if(speed <= stoppedSpeed)
 		return {x: 0, y: 0};
 	else
 		speed *= coefficientOfFriction;
-;
-
+	;
 	return setlength(v, speed);
 }
 
@@ -207,17 +199,6 @@ function norm(v) {
 	return Math.sqrt(v.x*v.x + v.y*v.y);
 }
 
-function getNumber(text) {
-	var res = prompt(text);
-
-	while(isNaN(res)) {
-		alert("That's not a number!");
-		res = prompt(text);
-	}
-
-	return res;
-}
-
 function navigateToAppPage(appPageId) { 
     var appPages = document.getElementsByClassName('appPage');
     for ( var i = 0; i < appPages.length; i++ ) {
@@ -228,4 +209,44 @@ function navigateToAppPage(appPageId) {
             appPages[i].style.display = "none";
             }
          }  
+}
+
+function attachKeyPadHandlers(){
+  var the_nums = document.getElementsByName('digit');
+  for (var i=0; i < the_nums.length; i++) { the_nums[i].onclick=addDigit; }
+  var delete_key = document.getElementsByName('delete');
+  delete_key[0].onclick=deleteDigit;
+}
+
+function addDigit() {
+var digits = document.getElementById('angle_text');
+if (digits.value=='0') { digits.value = this.value; } 
+else if (digits.value.length < digits.size) { digits.value += this.value; }
+}
+
+function deleteDigit() {
+var digits = document.getElementById('angle_text');
+digits.value = digits.value.slice(0, -1);
+if (digits.value.length==0) {digits.value='0';}
+}
+
+function syncValue(input1ID, input2ID) { 
+	document.getElementById(input1ID).value=document.getElementById(input2ID).value;
+	}
+	
+function setDefaultValues() { 
+	document.getElementById('friction_text').value=defaultFriction; 
+	document.getElementById('restitution_text').value=defaultRestitution; 
+	syncValue('friction_range','friction_text'); 
+	syncValue('restitution_range','restitution_text');
+	}
+
+function setFrictionValueFromRange() {
+	coefficientOfFriction = 1 * document.getElementById('friction_range').value;
+	syncValue('friction_text','friction_range');
+}
+function setRestitutionValueFromRange() {
+	coefficientOfRestitution = 1 * document.getElementById('restitution_range').value;
+	syncValue('restitution_text','restitution_range');
+	
 }

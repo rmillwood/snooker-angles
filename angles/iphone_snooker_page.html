@@ -40,70 +40,46 @@
 </svg>
 
 <div id="value_entry">
-<form class="numeric_keypad" >
+
+<form id="angle_value">
+<p>Angle: <input type="text" id="angle_text" value="0" size="3" readonly="readonly" class="numeric")>&deg;</p>
 <div id="keypad">
-    <div class="angle_value">
-    <p>Angle</p>
-     <input type="text" id="angle" value="0" size="3" readonly="readonly" class="numeric")>
-     &deg;
-    </div>
-    <div id="row1">
-     <input type="button" name="digit" value="1" id="_1" class="numeric_key">
-     <input type="button" name="digit" value="2" id="_2" class="numeric_key">
-     <input type="button" name="digit" value="3" id="_3" class="numeric_key">
-    </div>
-    <div id="row2">
-     <input type="button" name="digit" value="4" id="_4" class="numeric_key">
-     <input type="button" name="digit" value="5" id="_5" class="numeric_key">
-     <input type="button" name="digit" value="6" id="_6" class="numeric_key">
-    </div>
-    <div id="row3">
-     <input type="button" name="digit" value="7" id="_7" class="numeric_key">
-     <input type="button" name="digit" value="8" id="_8" class="numeric_key">
-     <input type="button" name="digit" value="9" id="_9" class="numeric_key">
-    </div>
-    <div id="row4">
-      <input type="button" name="digit" value="0" id="_0" class="numeric_key">
-      <input type="button" name="delete" value="del" id="_del" class="delete-key">
-    </div>
+<div id="row1">
+<input type="button" name="digit" value="1" id="_1" class="numeric_key">
+<input type="button" name="digit" value="2" id="_2" class="numeric_key">
+<input type="button" name="digit" value="3" id="_3" class="numeric_key">
+</div>
+<div id="row2">
+<input type="button" name="digit" value="4" id="_4" class="numeric_key">
+<input type="button" name="digit" value="5" id="_5" class="numeric_key">
+<input type="button" name="digit" value="6" id="_6" class="numeric_key">
+</div>
+<div id="row3">
+<input type="button" name="digit" value="7" id="_7" class="numeric_key">
+<input type="button" name="digit" value="8" id="_8" class="numeric_key">
+<input type="button" name="digit" value="9" id="_9" class="numeric_key">
+</div>
+<div id="row4">
+<input type="button" name="digit" value="0" id="_0" class="numeric_key">
+<input type="button" name="delete" value="del" id="_del" class="delete_key">
+</div>
 </div>
 </form>
 
-<script type="text/javascript">
+<p>&nbsp;</p>
 
-onload=function(){ attachKeyPadHandlers(); }
-
-function attachKeyPadHandlers(){
-  var the_nums = document.getElementsByName("digit");
-  for (var i=0; i < the_nums.length; i++) { the_nums[i].onclick=addDigit; }
-  var delete_key = document.getElementsByName("delete");
-  delete_key[0].onclick=deleteDigit;
-}
-
-function addDigit() {
-var digits = document.getElementById("angle");
-if (digits.value.length < digits.size) { digits.value += this.value; }
-}
-
-function deleteDigit() {
-var digits = document.getElementById("angle");
-digits.value = digits.value.slice(0, -1);
-}
-
-</script>
-
-<form class="range" >
-<div class=power_value>
+<form id="power_value">
 <p>Power</p>
-<input type="range" name="power" id="power" min="1" max="10" step="1" width="4em">
+<input type="range" id="power_range" min="1" max="20" step="1">
 <output for="power" onforminput="value = power.valueAsNumber;"></output>
-</div>
 </form>
 
-<form class="shot">
+<form id="shot_button">
 <button type="button" id="takeShot" disabled="disabled">Take a shot!</button>
 </form>
+
 </div>
+
 </div>
 
 
@@ -130,10 +106,10 @@ digits.value = digits.value.slice(0, -1);
 
 <p>The numbers are:</p>
 <ul>
-<li>0&deg for straight up (North),</li>
-<li>90&deg for right (East),</li>
-<li>180&deg for down (South) and</li>
-<li>270&deg for left (West).</li>
+<li>0&deg; for straight up (North),</li>
+<li>90&deg; for right (East),</li>
+<li>180&deg; for down (South) and</li>
+<li>270&deg; for left (West).</li>
 </ul>
 <p>This way of measuring angles is called bearings and is used by orienteers, ships and planes to find their way.</p>
 </div>
@@ -144,72 +120,28 @@ digits.value = digits.value.slice(0, -1);
 <img class="illustration" src="rm380z_computer.jpg">
 <p>It later became part of the SMILE suite of programs used in schools to learn about angles ('Flip' to see how the older version worked).</p>
 <p>Play with it to learn about the numbers used for angles.</p>
-<p>This 2012 version can also be used to investigate friction as well.</p>
+<p>This 2012 version can also be used to investigate the physics of friction and restitution.</p>
 <p>Read more at the: <br /> <a href="http://www.naec.org.uk/artefacts/software/micro-smile/snooker">National Archive of Educational Computing</a>.</p>
 </div>
 
 
-<div class="appPage" id="dials">
-<h1>Dials</h1>
-<p>Friction is the force resisting the ball's movement on the table. 
-<p>With Friction set to 1.00, the ball will never stop unless it falls into a pocket.</p>
+<div class="appPage" id="settings">
+<h1>Settings</h1>
+<p>Friction and Restitution are the key variables affecting the ball's movement.</p>
+<p><strong>Friction</strong> is the force resisting the ball's movement on the table. With Friction set to 1.00, the ball will never stop unless it is pocketed.</p>
+<p><strong>Restitution</strong> is the energy absorbed by the cushions. With restitution set to 1.00, no energy is lost in hitting the cushion - it is an elastic collosion.</p>
 <p>Experiment with different values:</p>
-<div class="dial" id="friction">
-<svg id="slider" xmlns='http://www.w3.org/2000/svg' width="70" height="220" version="1.1" onload="init(evt)" onmouseup="released()" onmousemove="drag(evt)">
-<title>Slider</title>
-<desc> SVG slider UI element Author: Nick Braun, 2011 Modified Richard Millwood 2012</desc>
-<script><![CDATA[
-  var isGripped = false
-  var grabY     // mousedown coordinate
-  var min = 0.90;  // minimum number on scale
-  var max = 1.00;  // maximum number on scale
-  var dp = 2;   // decimal places
-  var value     // from min to max to dp decimal places
-  var y         // the slider's dynamic coordinate
-     
-  function init(evt){
-  SVGDocument = evt.target.ownerDocument;           
-  value= SVGDocument.getElementById('value');
-  handle=SVGDocument.getElementById('handle');
-  // set dimensions according to the sliderFrame node below
-  var sliderFrame= SVGDocument.getElementById('sliderFrame')
-  //  y0 is the center of the slider, s is the range about the center
-  s =  0.5 * parseFloat(sliderFrame.getAttribute('height'));
-  y0 = parseFloat(sliderFrame.getAttribute('y')) + s;
-  y = y0;
-  value.textContent = ((max-min)/2*(1-(y-y0)/s)+min).toFixed(dp);
-  handle.setAttribute("cy",y0);
-  }
-      
-  function grip(evt) {  
-  isGripped=true;
-  grabY=evt.clientY-y;
-  }
 
-  function drag(evt){
-  if (!isGripped) return;
-  y = (evt.clientY);
-  // observe bounding box constraint
-  y = Math.min(Math.max(y-grabY,y0-s),y0+s);       
-  handle.setAttribute("cy",y);
-  value.textContent = ((max-min)/2*(1-(y-y0)/s)+min).toFixed(dp);
-  coefficientOfFriction = +value.textContent;
-  }
+<form class="setting" >
+<p>Friction: <input type="text" id="friction_text" value="0" size="4" readonly="readonly" class="numeric")>&nbsp;&nbsp;0.90<input type="range" name="friction_range" id="friction_range" min="0.9" max="1.0" step="0.01" value="0.98" width="4em" onchange="setFrictionValueFromRange();">1.00</p>
+</form>
 
-  function released(){
-  isGripped=false;
-  }
+<form class="setting" >
+<p>Restitution: <input type="text" id="restitution_text" value="0" size="4" readonly="readonly" class="numeric")>&nbsp;&nbsp;0.50<input type="range" name="restitution_range" id="restitution_range" min="0.5" max="1.0" step="0.01" value="0.90" width="4em" onchange="setRestitutionValueFromRange();">1.00</p>
+</form>
 
-]]></script>
-
-<rect id="backDrop" height="200" width="70" y="0" x="0" />
-<rect id="sliderFrame" height="130" width="20" x="25" y="35" />
-<circle id="handle" onmousedown="grip(evt)" r="15" cx="35" />
-<text id='value' x="20" y="195">0</text>
-<text id='name' x="5" y="15">Friction</text>
-</svg>
-</div>
-<p><a href="http://en.wikipedia.org/wiki/Friction">Friction on Wikipedia</a></p>
+<p>For further reference from Wikipedia:</p>
+<p><a href="http://en.wikipedia.org/wiki/Friction">Friction</a> <a href="http://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitution</a></p>
 </div> 
 
 
@@ -271,22 +203,22 @@ digits.value = digits.value.slice(0, -1);
 <div class="appPage" id="code">
 <h1>Code</h1>
 <p>Snooker was first developed using BASIC (Beginners All-purpose Symbolic Instruction Code) which was a common programming language for early microcomputers.</p>
-<p>A running version can be found on <a href="http://richardmillwood.net/snooker/Quite-BASIC-Snooker.html">the QuiteBASIC website</a>.</p>
-<p>This version is created in:</p>
+<p>The BASIC can be found on the <a href="http://richardmillwood.net/snooker/Quite-BASIC-Snooker.html">QuiteBASIC website</a>.</p>
+<p>This version is created using:</p>
  <ul>
- <li>HTML - HyperText Mark-up Language - used to arrange the words and diagrams</li>
- <li>SVG - Scalable Vector Graphics - used to draw the snooker table, ball and diagrams</li>
- <li>CSS - Cascading Style Sheets - used to set the style and colours and</li>
- <li>Javascript - used to program the snooker ball, set values and navigate between pages</li>
+ <li><strong>HTML</strong> - HyperText Mark-up Language - used to arrange the words and diagrams</li>
+ <li><strong>SVG</strong> - Scalable Vector Graphics - used to draw the snooker table, ball and diagrams</li>
+ <li><strong>CSS</strong> - Cascading Style Sheets - used to set the style and colours and</li>
+ <li><strong>Javascript</strong> - used to program the snooker ball, set values and navigate between pages</li>
  </ul>
-<p>The code can be found on <a href="https://github.com/rmillwood/snooker/tree/master/angles">the GitHub website</a>.</p>
+<p>The code can be found on the <a href="https://github.com/rmillwood/snooker/tree/master/angles">GitHub website</a>.</p>
 </div>
 
 <div id="navigation">
 <button type="button" id="play" onclick="navigateToAppPage('play')">Play</button>
 <button type="button" id="learn"onclick="navigateToAppPage('learn')">Learn</button>
 <button type="button" id="about" onclick="navigateToAppPage('about')"">About</button>
-<button type="button" id="dials" onclick="navigateToAppPage('dials')">Dials</button>
+<button type="button" id="settings" onclick="navigateToAppPage('settings')">Settings</button>
 <button type="button" id="flip"onclick="navigateToAppPage('flip')">Flip</button>
 <button type="button" id="code"onclick="navigateToAppPage('code')">Code</button>
 </div>

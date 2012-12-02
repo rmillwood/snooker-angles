@@ -1,234 +1,254 @@
 svg#snookerTable {
 	background-color: white;
 	float: right;
-}
+	}
 
 .border {
 	fill: brown;
-}
+	}
 
 #board {
 	fill: green;
-}
+	}
 
 .marking, .markingdot {
 	opacity: 0.8;
-}
+	}
 
 .marking {
 	stroke: white;
 	stroke-width: 2;
 	fill: none;
-}
+	}
 
 .markingdot {
 	stroke: none;
 	fill: white;
-}
+	}
 
 .pocket {
 	fill: black;
-}
+	}
 
 
 #ball {
 	fill: white;
-}
-
+	}
 
 div#value_entry {
 	width:120px;
-}
-form.numeric_keypad {
 	text-align: center;
-	margin: 0.5em;
-}
-
-form.range {
-	text-align: center;
-	margin: 0.5em;
-}
-
-form.shot {
-	text-align: center;
-	margin: 1em;
-}
-
-.angle_value {
-	font-size: 100%;
+	padding: 0.5em;
+	clear: left;
 	}
+
+form#angle_value {
+	
+	font-size: 100%;
+	background-color: LavenderBlush;
+	box-shadow: 4px 4px 2px Grey;
+	padding: 0.25em;
+	}
+
 		
 input.numeric { 
 	text-align: right; 
-	font-size: 100%; 
-	margin: none; 
-	width: 2em;
+	font-size: 120%; 
+	width: 3em;
 	}
+
+div#keypad {
+}
 	
 input.numeric_key {  
-	width: 24px; 
-	text-align:center;
+	width: 32px;
+	font-size: 125%;
 	}
 	
-.delete_key { 
-	width: 48px;
+input.delete_key { 
+	width: 68px;
+	font-size: 125%;
 	}
 	
-.power_value {
+form#power_value {
 	font-size: 100%;
-	}
-	
-input#power {
-	width: 80%;
+	text-align: center;
+	background-color: LavenderBlush;	
+	box-shadow: 4px 4px 2px Grey;
+	padding: 0.25em;
 }
 	
+input#power_range{
+	width: 80%;
+	}
+	
+form#shot_button {
+	text-align: center;
+	margin: 1em;
+	background-color: Grey;
+	}
 
+form.setting {
+	font-size: 100%;
+	text-align: right;
+	background-color: LavenderBlush;
+	margin:1em;
+	box-shadow: 4px 4px 2px Grey;
+	padding: 0.25em;
+}
+
+
+form input text {
+	font-size: 120%;
+}
+
+input#friction_range {
+	width: 80px;
+}
+
+input#restitution_range {
+	width: 80px;
+}
 
 svg#flipSnookerTable {
-	background-color: white;
-}
+	background-color: White;
+	}
 
-.flipTv{
-	background-color: DarkSlateGrey ;
-}
+.flipTv {
+	background-color: DarkSlateGrey;
+	}
 
 .flipBorder {
-	fill: white;
-}
+	fill: White;
+	}
 
 #flipBoard {
-	fill: grey;
-}
+	fill: Grey;
+	}
 
 .flipPocket {
-	fill: grey;
-}
+	fill: Grey;
+	}
 
 #flipBall {
-	fill: white;
-}
+	fill: White;
+	}
 
 body {
-background-color: black;
-margin: 0px;
-}
+	background-color: Black;
+	margin: 0px;
+	}
 
 h1 {
-float: left;
-display: block;
-padding: 0.4em;
-margin:  0.25em;
-border: 4px dotted green;
-}
+	float: left;
+	display: block;
+	padding: 0.4em;
+	margin:  0.25em;
+	border: 4px dotted Green;
+	}
 
-div #appScreenArea {
-width: 320px;
-height: 460px;
-}
+div#appScreenArea {
+	width: 320px;
+	height: 460px;
+	}
 
 div.appPage {
-display: none;
-width: 320px;
-height: 395px;
-font-family: "Arial Rounded MT Bold", sans-serif;
-line-height: 110%;
-background-color: white;
-}
+	display: none;
+	width: 320px;
+	height: 395px;
+	font-family: "Arial Rounded MT Bold", sans-serif;
+	line-height: 110%;
+	background-color: White;
+	}
 
 div.appPage p, li {
-font-size:75%;
-margin: 0px;
-padding-left: 0.5em;
-padding-right: 0.5em;
-padding-top: 0.5em;
-}
+	font-size:75%;
+	margin: 0px;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-top: 0.5em;
+	}
 
 div #navigation {
-width: 320px;
-height: 65px;
-text-align:center;
-}
+	width: 320px;
+	height: 65px;
+	text-align:center;
+	}
 
 
 .illustration {
-margin: 0.5em;
-display: block;
-float: right;
-}
+	margin: 0.5em;
+	display: block;
+	float: right;
+	}
 
 #splash {
-display: block;
-}
+	display: block;
+	}
 
 button {
- font-family: Helvetica ;
- font-weight: bold ;
- padding: 0.5em; 
- border: 2px solid grey ;
- -moz-border-radius: 8px ;
- -webkit-border-radius: 8px ; 
- margin-top: 0.5em;
- margin-bottom: 0.5em;
- background-color: white ;
-}
+	font-family: Helvetica ;
+	font-weight: bold ;
+	padding: 0.5em; 
+	border: 2px solid grey ;
+	-moz-border-radius: 8px ;
+	-webkit-border-radius: 8px ;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	background-color: white ;
+	}
 
 button#takeShot {
-float: left;
-}
+	float: left;
+	}
 
 svg#angleDiagram {
-background-color: green;
-display:block;
-float: right;
-margin: 0.25em;
-}
+	background-color: green;
+	display:block;
+	float: right;
+	margin: 0.25em;
+	}
 
 .constructionLine {
-fill:none;
-stroke:white;
-stroke-width:2;
-stroke-dasharray:2, 2;
-}
+	fill:none;
+	stroke:white;
+	stroke-width:2;
+	stroke-dasharray:2, 2;
+	}
 
 .vectorLine {
-fill:white;
-stroke:white;
-stroke-width:2;
-}
+	fill:white;
+	stroke:white;
+	stroke-width:2;
+	}
 
 .diagramText {
-font-size:75%;
-text-align:center;
-text-anchor:middle;
-fill:white;
-font-family:Comic Sans MS;
-}
+	font-size:75%;
+	text-align:center;
+	text-anchor:middle;
+	fill:white;
+	font-family:Comic Sans MS;
+	}
 
-div.dial {
+div.setting {
 	float: none;
 	text-align:center;
-}
+	}
 
 #backDrop {
 	fill: DarkSlateGrey;
-}
+	}
 #sliderFrame {
 	fill: LightSlateGrey;
-}
+	}
 #handle {
 	fill: white;
-}
+	}
 
 #name {
 	fill: white;
-}
+	}
 
 #value {
 	fill: white;
-}
-
-
-
-
-
-
+	}
