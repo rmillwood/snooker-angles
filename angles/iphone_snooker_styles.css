@@ -61,14 +61,18 @@ div#keypad {
 }
 	
 input.numeric_key {  
+	/*
 	width: 32px;
 	font-size: 125%;
+	*/
 	}
 	
 input.delete_key { 
+	/*
 	width: 68px;
 	font-size: 125%;
-	}
+	*/
+}
 	
 form#power_value {
 	font-size: 100%;
